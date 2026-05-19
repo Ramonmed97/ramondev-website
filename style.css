@@ -342,19 +342,22 @@ section {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5px;
-  background: var(--border);
-  border: 1px solid var(--border);
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
 }
 
 .service-card {
   background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
   padding: 2.5rem 2rem;
-  transition: background 0.2s;
+  transition: background 0.2s, border-color 0.2s;
   cursor: default;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .service-card::before {
@@ -378,6 +381,30 @@ section {
   transform: scaleX(1);
 }
 
+.service-card--featured {
+  border-color: rgba(0, 229, 160, 0.4);
+  background: #111120;
+}
+
+.service-card--featured::before {
+  transform: scaleX(1);
+}
+
+.service-badge {
+  display: inline-block;
+  background: rgba(0, 229, 160, 0.12);
+  border: 1px solid rgba(0, 229, 160, 0.35);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  margin-bottom: 1.25rem;
+  width: fit-content;
+}
+
 .service-icon {
   font-size: 16px;
   width: 44px;
@@ -393,22 +420,68 @@ section {
 
 .service-name {
   font-family: 'Syne', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 0.75rem;
 }
 
-.service-desc {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
+.service-price-block {
+  margin-bottom: 1.75rem;
 }
 
-.service-price {
+.service-price-main {
+  display: block;
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
   color: var(--accent);
+  line-height: 1.1;
+}
+
+.service-price-retainer {
   font-size: 12px;
-  font-weight: 500;
+  color: var(--muted);
+  margin-top: 0.3rem;
+  display: block;
+}
+
+.service-section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+
+.service-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.service-list li {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.6;
+  padding: 0.3rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.service-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 11px;
+  top: 0.35rem;
+}
+
+.service-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1.25rem 0;
 }
 
 /* ===========================
@@ -882,6 +955,7 @@ footer {
 
   .services-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .work-grid {
