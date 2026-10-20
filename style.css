@@ -61,6 +61,7 @@ nav {
   font-size: 1.3rem;
   letter-spacing: -0.5px;
   color: var(--text);
+  cursor: pointer;
 }
 
 .logo span {
@@ -342,7 +343,7 @@ section {
 
 .services-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   margin-top: 2.5rem;
 }
@@ -573,6 +574,74 @@ a.project-card {
   text-decoration: none;
   color: inherit;
   display: block;
+}
+
+/* Case study layout (screenshot left, details right) */
+.case-study {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  cursor: default;
+}
+
+.case-study-shot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left top;
+}
+
+.case-study:hover {
+  transform: none;
+  border-color: var(--border);
+}
+
+.case-study .project-thumb {
+  height: auto;
+  min-height: 280px;
+}
+
+.case-study .project-info {
+  padding: 2rem;
+}
+
+.case-study .service-section-label {
+  margin-top: 1.25rem;
+}
+
+.case-study a.project-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  text-decoration: none;
+}
+
+/* Developer page: center everything */
+.dev-page section {
+  text-align: center;
+}
+
+.dev-page .section-sub {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dev-page .skills-list {
+  justify-content: center;
+}
+
+.dev-page .service-list,
+.dev-page .project-info {
+  text-align: left;
+}
+
+.dev-page .work-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 420px));
+  justify-content: center;
+}
+
+.dev-page .service-icon {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ===========================
@@ -865,6 +934,11 @@ footer {
   .hero { padding: 7rem 2rem 4rem; }
   section { padding: 5rem 2rem; }
   .about-inner { gap: 3rem; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .services-grid .service-card:last-child { grid-column: 1 / -1; }
+  .dev-page #intro { padding-top: 6rem; }
+  .case-study { grid-template-columns: 1fr; }
+  .case-study .project-thumb { min-height: 200px; }
   footer { padding: 2rem; }
 }
 
@@ -951,6 +1025,11 @@ footer {
 
   section {
     padding: 4rem 1.5rem;
+  }
+
+  /* Keep the first section on the developer page clear of the taller mobile nav */
+  .dev-page #intro {
+    padding-top: 7rem;
   }
 
   .services-grid {

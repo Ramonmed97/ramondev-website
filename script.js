@@ -84,6 +84,11 @@ statNums.forEach(el => statsObserver.observe(el));
 /* ---- Logo scroll to top ---- */
 const logo = document.querySelector('.logo');
 logo.addEventListener('click', () => {
+  // On the developer page the logo goes back to the home page
+  if (document.body.classList.contains('dev-page')) {
+    window.location.href = 'index.html';
+    return;
+  }
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
