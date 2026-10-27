@@ -92,6 +92,29 @@ logo.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+/* ---- Developer page: footer logo scrolls to top ---- */
+const footerLogo = document.querySelector('.footer-logo');
+if (footerLogo && document.body.classList.contains('dev-page')) {
+  footerLogo.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+/* ---- Keep the URL clean when jumping to a section ----
+   Without this, clicking "Work" changes the address to /#work, and copying
+   that address sends people straight to Recent work instead of the top. */
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  const href = link.getAttribute('href');
+  if (href.length < 2) return;
+  link.addEventListener('click', (e) => {
+    const target = document.querySelector(href);
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth' });
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  });
+});
+
 /* ---- Active nav link on click ---- */
 navLinks.forEach(link => {
   link.addEventListener('click', () => {

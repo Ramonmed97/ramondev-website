@@ -639,6 +639,10 @@ a.project-card {
   justify-content: center;
 }
 
+.dev-page .footer-logo {
+  cursor: pointer;
+}
+
 .dev-page .service-icon {
   margin-left: auto;
   margin-right: auto;
