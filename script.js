@@ -72,7 +72,7 @@ const statsObserver = new IntersectionObserver(
         if (raw === 0) return;
         const prefix = text.match(/^[^0-9]*/)[0];
         const suffix = text.match(/[^0-9]*$/)[0];
-        animateCounter(el, raw, prefix, suffix, 1200);
+        animateCounter(el, raw, prefix, suffix, 3000);
       }
     });
   },
